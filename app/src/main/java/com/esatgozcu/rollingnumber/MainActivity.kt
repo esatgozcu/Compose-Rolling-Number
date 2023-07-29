@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting() {
-    val number = remember { mutableStateOf(100) }
+    val number = remember { mutableStateOf(100.0) }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -43,7 +43,7 @@ fun Greeting() {
         RollingNumberView(vm = RollingNumberVM(number.value.toString(), suffix = "$"))
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = "Increase",Modifier.clickable {
-            number.value = number.value + 123
+            number.value = number.value + 123.012
         })
     }
 }
