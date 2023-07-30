@@ -1,5 +1,6 @@
 package com.esatgozcu.rollingnumber.numberWheel
 
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -12,7 +13,7 @@ import com.esatgozcu.rollingnumber.RollingNumberVM
 fun SingleNumberElement(number: Int, size: Size, vm: RollingNumberVM){
     Text(
         text = "$number",
-        modifier = Modifier.size(size.width.dp,size.height.dp),
+        modifier = Modifier.height(size.height.dp),
         style = vm.textStyle
     )
 }
