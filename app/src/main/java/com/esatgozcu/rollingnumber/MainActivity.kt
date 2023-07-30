@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -36,8 +38,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting() {
     val number = remember { mutableStateOf(100.0) }
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
+    Column(horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         RollingNumberView(vm = RollingNumberVM(number.value.toString(), suffix = "$"))

@@ -3,6 +3,7 @@ package com.esatgozcu.rollingnumber.numberWheel
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -36,9 +37,9 @@ fun NumberWheel(visibleNumber: Int = 0, size: Size, vm: RollingNumberVM){
         )
     })
 
-    LazyColumn(Modifier.offset(y = itemTarget.value.dp)
+    Column(Modifier.offset(y = itemTarget.value.dp)
     ) {
-        items(numbers.count()){
+        repeat(numbers.count()){
             SingleNumberElement(number = numbers[it],size, vm)
         }
     }
