@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.unit.dp
@@ -37,7 +38,8 @@ fun NumberWheel(visibleNumber: Int = 0, size: Size, vm: RollingNumberVM){
         )
     })
 
-    Column(Modifier.offset(y = itemTarget.value.dp)
+    Column(Modifier.offset(y = itemTarget.value.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         repeat(numbers.count()){
             SingleNumberElement(number = numbers[it],size, vm)
