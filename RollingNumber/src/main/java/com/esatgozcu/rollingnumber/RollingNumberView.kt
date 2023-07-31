@@ -1,30 +1,17 @@
 package com.esatgozcu.rollingnumber
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.layout
-import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.unit.dp
 import com.esatgozcu.rollingnumber.helper.MeasureUnconstrainedViewWidth
 import com.esatgozcu.rollingnumber.numberWheel.NumberWheel
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun RollingNumberView(vm: RollingNumberVM){
     MeasureUnconstrainedViewWidth(viewToMeasure = {
@@ -35,9 +22,7 @@ fun RollingNumberView(vm: RollingNumberVM){
         )
     }) { width,height ->
         val result = vm.number.toCharArray()
-        Column(
-            modifier = Modifier.nestedScroll(rememberNestedScrollInteropConnection())
-        ) {
+        Column {
             //Avoid to use lazy row or column because we use repeat to add child view.
             //Otherwise you need to face this problem:
             //Error: Vertically scrollable component was measured with an infinity maximum height constraints, which is disallowed.
