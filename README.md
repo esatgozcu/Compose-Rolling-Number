@@ -19,7 +19,7 @@ repositories {
 
 ```Gradle
 dependencies {
-      implementation 'com.github.esatgozcu:Compose-Rolling-Number:1.0.1'
+      implementation 'com.github.esatgozcu:Compose-Rolling-Number:1.0.5'
 }
 ```
 
@@ -27,19 +27,11 @@ dependencies {
 
 ```Kotlin
 
-@Composable
-fun Greeting() {
-    val number = remember { mutableStateOf(100) }
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        RollingNumberView(vm = RollingNumberVM(number.value.toString(), suffix = "$"))
-        Spacer(modifier = Modifier.height(10.dp))
-        Text(text = "Increase",Modifier.clickable {
-            number.value = number.value + 123
-        })
-    }
-}
+val number = remember { mutableStateOf(100) }
+RollingNumberView(vm = RollingNumberVM(number.value.toString(), suffix = "$"))
+
+Text(text = "Animate", Modifier.clickable {
+    number.value = number.value + 123.34355111
+})
 
 ```
