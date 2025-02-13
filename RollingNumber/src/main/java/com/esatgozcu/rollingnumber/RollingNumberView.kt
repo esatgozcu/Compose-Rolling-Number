@@ -8,20 +8,27 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.esatgozcu.rollingnumber.helper.MeasureUnconstrainedViewWidth
 import com.esatgozcu.rollingnumber.numberWheel.NumberWheel
 
 @Composable
-fun RollingNumberView(vm: RollingNumberVM){
+fun RollingNumberView(
+    number: String = "",
+    prefix: String = "",
+    suffix: String = "",
+    textStyle: TextStyle = TextStyle(fontSize = 24.sp)
+){
     MeasureUnconstrainedViewWidth(viewToMeasure = {
         //Default text to determine size
         Text(
             text = "0",
-            style = vm.textStyle
+            style = textStyle
         )
     }) { width,height ->
-        val result = vm.number.toCharArray()
+        val result = number.toCharArray()
         Column {
             //Avoid to use lazy row or column because we use repeat to add child view.
             //Otherwise you need to face this problem:
@@ -37,14 +44,18 @@ fun RollingNumberView(vm: RollingNumberVM){
                 }
                 .wrapContentWidth()
             ) {
-                if (vm.prefix.isNotEmpty()){
-                    Text(text = vm.prefix, style = vm.textStyle)
+                if (prefix.isNotEmpty()){
+                    Text(text = prefix, style = textStyle)
                 }
-                repeat(result.asList().size){
-                    NumberComponent(char = result.asList()[it], Size(width = width.value, height = height.value), vm)
+                repeat(result.size){
+                    NumberComponent(
+                        char = result[it],
+                        size = Size(width = width.value, height = height.value),
+                        style = textStyle
+                    )
                 }
-                if (vm.suffix.isNotEmpty()){
-                    Text(text = vm.suffix, style = vm.textStyle)
+                if (suffix.isNotEmpty()){
+                    Text(text = suffix, style = textStyle)
                 }
             }
         }
@@ -52,15 +63,15 @@ fun RollingNumberView(vm: RollingNumberVM){
 }
 
 @Composable
-fun NumberComponent(char: Char, size: Size, vm: RollingNumberVM) {
+fun NumberComponent(char: Char, size: Size, style: TextStyle) {
     if (char.isDigit()){
-        NumberWheel(visibleNumber = char.digitToInt(), size, vm)
+        NumberWheel(visibleNumber = char.digitToInt(), size, style)
     }
     else{
         Text(
             text = char.toString(),
             modifier = Modifier.height(size.height.dp),
-            style = vm.textStyle
+            style = style
         )
     }
 }
