@@ -41,7 +41,10 @@ fun Greeting() {
     Column(horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        RollingNumberView(vm = RollingNumberVM(number.value.toString(), suffix = "$"))
+        RollingNumberView(
+            number = number.value.toString(),
+            suffix = "$"
+        )
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = "Increase",Modifier.clickable {
             number.value = number.value + 123.012

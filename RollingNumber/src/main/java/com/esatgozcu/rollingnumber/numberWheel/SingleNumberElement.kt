@@ -6,14 +6,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.esatgozcu.rollingnumber.RollingNumberVM
 
 @Composable
-fun SingleNumberElement(number: Int, size: Size, vm: RollingNumberVM){
+fun SingleNumberElement(number: Int, size: Size, style: TextStyle){
     Text(
         text = "$number",
         modifier = Modifier.height(size.height.dp),
-        style = vm.textStyle
+        style = style
     )
 }

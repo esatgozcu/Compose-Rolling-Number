@@ -11,11 +11,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.esatgozcu.rollingnumber.RollingNumberVM
 
 @Composable
-fun NumberWheel(visibleNumber: Int = 0, size: Size, vm: RollingNumberVM){
+fun NumberWheel(visibleNumber: Int = 0, size: Size, style: TextStyle){
 
     fun offset(): Float {
         val offsetMultiplier = 9f - visibleNumber.toFloat()
@@ -41,7 +41,7 @@ fun NumberWheel(visibleNumber: Int = 0, size: Size, vm: RollingNumberVM){
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         repeat(numbers.count()){
-            SingleNumberElement(number = numbers[it],size, vm)
+            SingleNumberElement(number = numbers[it], size, style)
         }
     }
 }

@@ -28,7 +28,10 @@ dependencies {
 ```Kotlin
 
 val number = remember { mutableStateOf(100) }
-RollingNumberView(vm = RollingNumberVM(number.value.toString(), suffix = "$"))
+RollingNumberView(
+    number = number.value.toString(),
+    suffix = "$"
+)
 
 Text(text = "Animate", Modifier.clickable {
     number.value = number.value + 123.34355111
